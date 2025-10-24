@@ -6,6 +6,7 @@ const cors = require("cors")
 
 require ("dotenv").config()
 
+app.use(express.static("FRONTEND"))
 app.use(express.json())
 app.use(cors())
 
@@ -21,9 +22,12 @@ mongoose.connect(process.env.MONGO_KEY)
 
     .catch((err) => console.log(err))
 
+    
 app.get("/", (req,res) => {
     res.sendFile(__dirname + "/FRONTEND/index.html")
 })
+
+
 app.post("/livro", async (req, res) =>{
     const{titulo, autor, valor} = (req.body)
         const novoLivro ={
@@ -40,6 +44,7 @@ app.post("/livro", async (req, res) =>{
         res.send(error)
     }
 })
+
 
 app.get("/livros", async (req, res) => {
     try{
