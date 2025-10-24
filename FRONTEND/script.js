@@ -1,4 +1,4 @@
-const APIURL = "https://livraria-estagio-front.vercel.app/"
+const APIURL = "http://localhost:3000"
 
 async function carregarProdutos(){
     const res = await fetch(`${APIURL}/livros`)
